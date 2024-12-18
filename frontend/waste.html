@@ -1,0 +1,289 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #waste-form {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        #waste-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        #waste-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #waste-form button:hover {
+            background-color: #218838;
+        }
+        #history {
+            width: 300px;
+            margin: 20px auto;
+        }
+        #waste-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #waste-list li {
+            padding: 10px;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Waste Management System</h1>
+
+     Waste Creation Form -->
+    <!-- <div id="waste-form">
+        <h2>Create Waste</h2>
+        <form id="create-waste-form">
+            <label for="waste-type">Waste Type:</label>
+            <input type="text" id="waste-type" placeholder="e.g., Plastic, Paper" required>
+
+            <label for="quantity">Quantity (kg):</label>
+            <input type="number" id="quantity" placeholder="e.g., 5" required>
+
+            <button type="submit">Create Waste</button>
+        </form>
+    </div>
+
+    History of Created Waste -->
+    <!-- <div id="history">
+        <h3>Your Waste History</h3>
+        <ul id="waste-list"></ul>
+    </div>
+
+    <script>
+        // Event listener for submitting the waste creation form
+        document.getElementById('create-waste-form').addEventListener('submit', createWaste);
+
+        // Function to create waste and send it to the backend
+        function createWaste(event) {
+            event.preventDefault();
+
+            const wasteType = document.getElementById('waste-type').value;
+            const quantity = document.getElementById('quantity').value;
+
+            // Send data to backend (assuming API endpoint `/api/waste`)
+            fetch('/api/waste', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    wasteType: wasteType,
+                    quantity: quantity
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Waste Created!');
+                loadWasteHistory();
+            })
+            .catch(error => {
+                console.error('Error creating waste:', error);
+                alert('Failed to create waste');
+            });
+        }
+
+        // Function to load waste history from the backend
+        function loadWasteHistory() {
+            fetch('/api/waste')
+            .then(response => response.json())
+            .then(wasteHistory => {
+                const wasteList = document.getElementById('waste-list');
+                wasteList.innerHTML = '';  // Clear the current list
+
+                // Display the waste history
+                wasteHistory.forEach(waste => {
+                    const li = document.createElement('li');
+                    li.textContent = `${waste.type} - ${waste.quantity}kg (Status: ${waste.status})`;
+                    wasteList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching waste history:', error);
+            });
+        }
+
+        // Load the waste history when the page loads
+        window.onload = loadWasteHistory;
+    </script>
+
+</body>
+</html> --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #waste-form {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        #waste-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        #waste-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #waste-form button:hover {
+            background-color: #218838;
+        }
+        #history {
+            width: 300px;
+            margin: 20px auto;
+        }
+        #waste-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #waste-list li {
+            padding: 10px;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Waste Management System</h1>
+
+    <!-- Waste Creation Form -->
+    <div id="waste-form">
+        <h2>Create Waste</h2>
+        <form id="create-waste-form">
+            <label for="waste-type">Waste Type:</label>
+            <input type="text" id="waste-type" placeholder="e.g., Plastic, Paper" required>
+
+            <label for="quantity">Quantity (kg):</label>
+            <input type="number" id="quantity" placeholder="e.g., 5" required>
+
+            <button type="submit">Create Waste</button>
+        </form>
+    </div>
+
+    <!-- History of Created Waste -->
+    <div id="history">
+        <h3>Your Waste History</h3>
+        <ul id="waste-list"></ul>
+    </div>
+
+    <script>
+        // Event listener for submitting the waste creation form
+        document.getElementById('create-waste-form').addEventListener('submit', createWaste);
+
+        // Function to create waste and send it to the backend
+        function createWaste(event) {
+            event.preventDefault();
+
+            const wasteType = document.getElementById('waste-type').value;
+            const quantity = document.getElementById('quantity').value;
+
+            // Send data to backend (assuming API endpoint `/api/waste`)
+            fetch('http://localhost:3000/api/waste', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    wasteType: wasteType,
+                    quantity: quantity
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Waste Created!');
+                loadWasteHistory();
+            })
+            .catch(error => {
+                console.error('Error creating waste:', error);
+                alert('Failed to create waste');
+            });
+        }
+
+        // Function to load waste history from the backend
+        function loadWasteHistory() {
+            fetch('http://localhost:3000/api/waste')
+            .then(response => response.json())
+            .then(wasteHistory => {
+                const wasteList = document.getElementById('waste-list');
+                wasteList.innerHTML = '';  // Clear the current list
+
+                // Display the waste history
+                wasteHistory.forEach(waste => {
+                    const li = document.createElement('li');
+                    li.textContent = `${waste.type} - ${waste.quantity}kg (Status: ${waste.status})`;
+                    wasteList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching waste history:', error);
+            });
+        }
+
+        // Load the waste history when the page loads
+        window.onload = loadWasteHistory;
+    </script>
+
+</body>
+</html>

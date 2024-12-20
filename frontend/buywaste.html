@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Waste</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4f8d4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-buy {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-reset {
+      background-color: #cccccc;
+      color: black;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Buy Waste</h1>
+    <form id="buyWasteForm">
+      <div class="form-group">
+        <input type="text" placeholder="e.g., Waste-01" id="wasteID" required />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="e.g., Manufacturer-01" id="owner" required />
+      </div>
+      <button type="submit" class="btn-buy">Buy</button>
+      <button type="button" class="btn-reset" id="resetButton">Reset</button>
+    </form>
+  </div>
+
+  <script>
+    // Get references to form elements
+    const form = document.getElementById('buyWasteForm');
+    const wasteIDInput = document.getElementById('wasteID');
+    const ownerInput = document.getElementById('owner');
+    const resetButton = document.getElementById('resetButton');
+
+    // Handle form submission
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+
+      const wasteID = wasteIDInput.value.trim();
+      const owner = ownerInput.value.trim();
+
+      if (wasteID && owner) {
+        alert(`Buying waste with ID: ${wasteID} from owner: ${owner}`);
+        // Add your API or processing logic here
+      } else {
+        alert('Please fill out both fields.');
+      }
+    });
+
+    // Handle reset button click
+    resetButton.addEventListener('click', () => {
+      wasteIDInput.value = '';
+      ownerInput.value = '';
+    });
+  </script>
+</body>
+</html>

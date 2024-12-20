@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Product</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4f8d4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-create {
+      background-color: #28a745;
+      color: white;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Create Product</h1>
+    <form id="createProductForm">
+      <div class="form-group">
+        <input type="text" placeholder="e.g., Product-01" id="productID" required />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="e.g., Waste-01" id="wasteID" required />
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="e.g., Recycled Plastic" id="productName" required />
+      </div>
+      <button type="submit" class="btn-create">Create Product</button>
+    </form>
+  </div>
+
+  <script>
+    // Get references to form elements
+    const form = document.getElementById('createProductForm');
+    const productIDInput = document.getElementById('productID');
+    const wasteIDInput = document.getElementById('wasteID');
+    const productNameInput = document.getElementById('productName');
+
+    // Handle form submission
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+
+      const productID = productIDInput.value.trim();
+      const wasteID = wasteIDInput.value.trim();
+      const productName = productNameInput.value.trim();
+
+      if (productID && wasteID && productName) {
+        alert(`Product Created: \nProduct ID: ${productID}\nWaste ID: ${wasteID}\nProduct Name: ${productName}`);
+        // Add your API or processing logic here
+      } else {
+        alert('Please fill out all fields.');
+      }
+    });
+    function createWaste(event) {
+            event.preventDefault();
+
+            const wasteType = document.getElementById('waste-type').value;
+            const quantity = document.getElementById('quantity').value;
+
+            // Send data to backend (assuming API endpoint `/api/waste`)
+            fetch('http://localhost:5555/api/createwaste', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    wasteType: wasteType,
+                    quantity: quantity
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Waste Created!');
+                loadWasteHistory();
+            })
+            .catch(error => {
+                console.error('Error creating waste:', error);
+                alert('Failed to create waste');
+            });
+        }
+
+        // Function to load waste history from the backend
+        function loadProductHistory() {
+            fetch('http://localhost:5555/api/createproduct')
+            .then(response => response.json())
+            .then(productHistory => {
+                const wasteList = document.getElementById('product-list');
+                productList.innerHTML = '';  // Clear the current list
+
+                // Display the waste history
+                productHistory.forEach(product => {
+                    const li = document.createElement('li');
+                    li.textContent = `${product.type} - ${waste.type}kg (Status: ${product.status})`;
+                   productList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching product history:', error);
+            });
+        }
+
+        // Load the waste history when the page loads
+        window.onload = loadProductHistory;
+  </script>
+</body>
+</html>

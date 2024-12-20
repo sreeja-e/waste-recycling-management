@@ -77,7 +77,8 @@ app.use(cors());  // Enable CORS for all routes
 app.use(bodyParser.json());
 
 // MongoDB connection setup
-mongoose.connect('mongodb://localhost:27017/waste_management', { useNewUrlParser: true, useUnifiedTopology: true })
+// v8V5ygdwgRqEGKOX
+mongoose.connect('mongodb+srv://admin2:v8V5ygdwgRqEGKOX@cluster0.2cew4.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
 
@@ -91,7 +92,7 @@ const wasteSchema = new mongoose.Schema({
 const Waste = mongoose.model('Waste', wasteSchema);
 
 // Route to create waste
-app.post('/api/waste', async (req, res) => {
+app.post('/api/createwaste', async (req, res) => {
     const { wasteType, quantity } = req.body;
 
     const newWaste = new Waste({
@@ -102,6 +103,24 @@ app.post('/api/waste', async (req, res) => {
     try {
         const savedWaste = await newWaste.save();
         res.status(201).json(savedWaste);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+app.post('/api/createproduct', async (req, res) => {
+    const { productType,wasteType,example } = req.body;
+
+    const newWaste = new Waste({
+        type: productType,
+        type:wasteType
+
+        // quantity: quantity,
+    });
+
+    try {
+        const savedProduct = await newWaste.save();
+        res.status(201).json(savedProduct);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -131,7 +150,7 @@ app.post('/api/recycle/:id', async (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5555;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

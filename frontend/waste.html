@@ -240,7 +240,7 @@
             const quantity = document.getElementById('quantity').value;
 
             // Send data to backend (assuming API endpoint `/api/waste`)
-            fetch('http://localhost:3000/api/waste', {
+            fetch('http://localhost:5555/api/createwaste', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -263,7 +263,7 @@
 
         // Function to load waste history from the backend
         function loadWasteHistory() {
-            fetch('http://localhost:3000/api/waste')
+            fetch('http://localhost:5555/api/waste')
             .then(response => response.json())
             .then(wasteHistory => {
                 const wasteList = document.getElementById('waste-list');

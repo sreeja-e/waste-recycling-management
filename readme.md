@@ -1,20 +1,18 @@
 # Waste Recycling Management
 
-**Waste Recycling Management** is a web-based application designed to streamline and enhance the processes involved in waste collection, segregation, and recycling. The platform aims to promote efficient waste management practices, encouraging environmental sustainability and resource conservation.
+**Waste Recycling Management** is a web-based application designed to streamline and enhance the processes involved in waste recycling. The platform aims to promote efficient waste management practices, encouraging environmental sustainability and resource conservation.
 
 ---
 
 ## Features
 
-- **User Registration and Authentication**: Secure user sign-up and login functionalities to ensure authorized access.
+- **Registration and Authentication**: Secure sign-up and login functionalities to ensure authorized access.
 
-- **Waste Collection Requests**: Users can schedule waste pickups, specifying the type and quantity of waste.
-
-- **Real-time Tracking**: Monitor the status of waste collection requests from initiation to completion.
-
-- **Segregation Guidelines**: Provides users with information on proper waste segregation to promote effective recycling.
+- **Waste Collection Requests**: Schedule waste pickups, specifying the type and quantity of waste.
 
 - **Recycling Statistics**: Displays data on the amount of waste recycled, contributing to environmental awareness.
+  
+- **Manufacturer Role**: Buy waste and create product, specifying type of waste and name of product.
 
 ---
 
@@ -94,7 +92,7 @@ The repository is organized as follows:
 ## Usage
 
 1. **Access the Application**:
-   Open `http://localhost:3000` in your web browser.
+   Open `http://localhost:5555` in your web browser.
 
 2. **Register an Account**:
    Sign up with your email and password to create a new account.

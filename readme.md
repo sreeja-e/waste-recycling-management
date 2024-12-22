@@ -51,7 +51,7 @@ To set up the **Waste Recycling Management** application locally, follow these s
    ```bash
    npm start
    ```
-   The backend server will typically run on `http://localhost:5000`.
+   The backend server will typically run on `http://localhost:5555`.
 
 ### Frontend Setup
 

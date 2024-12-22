@@ -73,7 +73,7 @@ To set up the **Waste Recycling Management** application locally, follow these s
    ```bash
    npm start
    ```
-   The application will be accessible at `http://localhost:3000`.
+   The application will be accessible at `http://localhost:5555`.
 
 ---
 

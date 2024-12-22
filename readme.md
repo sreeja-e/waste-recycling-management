@@ -111,6 +111,13 @@ The repository is organized as follows:
 6. **Learn About Waste Segregation**:
    Access guidelines and tips on proper waste segregation to facilitate recycling.
 
+7. **Monitor the recycling progress in real-time through the dashboard**:
+   Access Recycling Data
+
+8. **View reports on the quantity and types of waste recycled**:
+   Gain insights into recycling trends and operational efficiency.
+
+9. **Partner with manufacturers for efficient material reuse**
 ---
 
 ## Contributing

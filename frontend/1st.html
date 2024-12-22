@@ -20,7 +20,7 @@
 
         /* Header Styles */
         header {
-            background-color: #007f3d;
+            background-color: #3b940b;
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -41,7 +41,7 @@
         }
 
         header nav a:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         /* Main Content */
@@ -91,7 +91,8 @@
         }
 
         .role.waste {
-            background-color: #8fed8f;
+            background-color: #f09a54;
+            text-decoration: none;
         }
 
         .role.recycle {
@@ -99,7 +100,7 @@
         }
 
         .role.manufacturer {
-            background-color: #b0d4ff;
+            background-color: #be8ff1;
         }
 
         .role.government {
@@ -119,14 +120,14 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1>Waste Management System</h1>
+        <h1>Waste Recycling Management</h1>
         <p>Choose your role to access the system:</p>
 
         <div class="roles">
-            <a href="waste.html"><button class="role manufacturer">User</button></a>
-            <div class="role recycle">Recycling Center</div>
-            <a href="manufacturer-dashboard.html"><button class="role manufacturer">Manufacturer</button></a>
-            <div class="role government">Government</div>
+            <a href="waste-dashboard.html"><button class="role manufacturer">Waste collection company</button></a>
+            <a href="recycling-dashboard.html"><div class="role recycle">Recycling Center</div></a>
+            <a href="manufacturer-dashboard.html"><button class="role waste">Manufacturer</button></a>
+            <div class="role government">Government/Users</div>
         </div>
     </div>
 

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Waste</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4f9d3;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>All Waste</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Waste ID</th>
+        <th>Total Weight (kg)</th>
+        <th>Collection Company</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+    <tbody id="wasteTableBody">
+      <!-- Data will be inserted here dynamically -->
+    </tbody>
+  </table>
+
+  <script>
+    async function fetchWasteData() {
+      try {
+        const response = await fetch('http://localhost:5555/api/waste');
+        const wasteData = await response.json();
+
+        const tableBody = document.getElementById('wasteTableBody');
+        tableBody.innerHTML = '';
+
+        wasteData.forEach(waste => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${waste.wasteId}</td>
+            <td>${waste.totalWeight}</td>
+            <td>${waste.collectionCompany}</td>
+            <td>${waste.owner}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching waste data:', error);
+      }
+    }
+
+    fetchWasteData();
+  </script>
+</body>
+</html> 
